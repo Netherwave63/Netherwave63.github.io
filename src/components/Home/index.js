@@ -1,12 +1,14 @@
 // dependencies
 import React from 'react';
+import { compose } from 'recompose';
 
 // higher order components
-import { withAuthorization } from '../Session';
+import { 
+  withAuthorization, 
+  AuthUserContext,
+  withEmailVerification 
+} from '../Session';
 import { withFirebase } from '../Firebase';
-
-// constants
-import * as ROUTES from '../../constants/routes';
 
 // main component -> HomePage
 const HomePage = () => (
@@ -17,9 +19,13 @@ const HomePage = () => (
           <Menu />
         </div>
 
-        <div className="column">
-          <Tasks />
-        </div>
+        <AuthUserContext.Consumer>
+          {authUser => 
+            <div className="column">
+              <Tasks authUser={authUser} />
+            </div>
+          }
+        </AuthUserContext.Consumer>
       </div>
     </div>
   </section>
@@ -54,12 +60,17 @@ class TasksBase extends React.Component {
     this.state = {
       loading: false,
       tasks: [],
-      text: ''
+      text: '',
+      userId: ''
     };
   }
 
   componentDidMount = () => {
     this.setState({ loading: true });
+
+    this.props.firebase.user(this.props.authUser.uid).once('value', snapshot => {
+      this.setState({ userId: snapshot.val().username });
+    });
 
     this.props.firebase.tasks().on('value', snapshot => {
       const tasksObject = snapshot.val();
@@ -116,12 +127,15 @@ class TasksBase extends React.Component {
     const {
       loading,
       tasks, 
-      text
+      text,
+      userId
     } = this.state;
 
     return (
       <div>
-        <p className="subtitle">Dashboard</p>
+        <p className="subtitle">
+          Welcome <span className="has-text-link">{userId}</span>
+        </p>
 
         <form onSubmit={this.onCreateTask}>
           <div className="field has-addons">
@@ -256,10 +270,17 @@ class TaskItem extends React.Component {
               <span>
                 <button
                   type="button"
-                  className="button is-success is-small"
+                  className="button is-link is-small"
                   onClick={this.onToggleEditMode}
                 >
                   Edit
+                </button>
+                &nbsp;
+                <button
+                  type="button"
+                  className="button is-success is-small"
+                >
+                  Archieve
                 </button>
                 &nbsp;
                 <button
@@ -280,4 +301,7 @@ class TaskItem extends React.Component {
 
 const condition = authUser => !!authUser; 
 
-export default withAuthorization(condition)(HomePage);
+export default compose(
+  withEmailVerification,
+  withAuthorization(condition)
+)(HomePage);

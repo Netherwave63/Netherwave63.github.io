@@ -30,9 +30,19 @@ class Firebase {
   doSignInWithEmailAndPassword = (email, password) =>
     this.auth.signInWithEmailAndPassword(email, password);
 
+  doSendEmailVerification = () =>
+    this.auth.currentUser.sendEmailVerification({
+      url: "http://localhost:3000"
+    });
+
   doSignOut = () => this.auth.signOut();
 
-  /*** ToDo Task API ***/
+  /*** User API ***/
+  user = uid => this.db.ref(`users/${uid}`);
+
+  users = () => this.db.ref("users");
+
+  /*** User Database API ***/
   task = uid => this.db.ref(`tasks/${uid}`);
 
   tasks = () => this.db.ref("tasks");
