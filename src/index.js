@@ -1,15 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import 'bulma/css/bulma.css';
-import Firebase, { withFirebase, FirebaseContext } from './components/Firebase';
-import App from './components/App';
+import App from './App';
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
-  <FirebaseContext.Provider value={new Firebase()}>
-    <App />
-  </FirebaseContext.Provider>,
+  <App />,
   document.getElementById('root')
 );
 
