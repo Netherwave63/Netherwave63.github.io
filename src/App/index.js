@@ -5,15 +5,18 @@ import {
   Switch,
   Route 
 } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 // others
 import Navigation from '../Navigation';
 import About from '../About';
 import Project from '../Project';
+import ProjectDetails from '../Project/projectDetails';
 import Contact from '../Contact';
+import Modal from '../Modal';
 
 // App
-const App = () => (
+const App = ({ isActive }) => (
   <Router>
     <Navigation />
 
@@ -22,6 +25,9 @@ const App = () => (
         <Route exact path="/">
           <About />
         </Route>
+        <Route path="/projects/:id">
+          <ProjectDetails />
+        </Route>
         <Route path="/projects">
           <Project />
         </Route>
@@ -29,6 +35,8 @@ const App = () => (
           <Contact />
         </Route>
       </Switch>
+
+      {isActive ? <Modal /> : null}
     </main>
 
     <footer className="footer">
@@ -38,4 +46,10 @@ const App = () => (
 );
 
 // export 
-export default App;
+const mapStateToProps = state => ({
+  isActive: state.modalState.isActive
+});
+
+export default connect(
+  mapStateToProps
+)(App);

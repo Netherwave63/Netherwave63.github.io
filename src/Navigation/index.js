@@ -7,9 +7,9 @@ const Navigation =  () => {
   return (
     <nav className="navbar is-dark" role="navigation" aria-label="main navigation">
       <div className="navbar-brand">
-        <a className="navbar-item">
+        <Link to="/" className="navbar-item">
           Netherwave63
-        </a>
+        </Link>
         <a 
           role="button"
           className={isActive ? "navbar-burger is-active" : "navbar-burger"}

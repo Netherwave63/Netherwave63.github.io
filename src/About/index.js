@@ -41,13 +41,5 @@ const About = () => (
   </React.Fragment>
 );
 
-const ProgressBar = ({ value, children }) => (
-  <div>
-    <p className="subtitle">{children}</p>
-    <progress className="progress" value={value} max="100"></progress>
-    <br />
-  </div>
-)
-
 // export
 export default About;

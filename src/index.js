@@ -4,8 +4,13 @@ import 'bulma/css/bulma.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
+import store from './State/store';
+import { Provider } from 'react-redux';
+
 ReactDOM.render(
-  <App />,
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.getElementById('root')
 );
 

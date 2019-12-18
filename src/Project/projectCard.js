@@ -1,79 +1,35 @@
 // dependencies
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 // ProjectCard
 const ProjectCard = ({ project }) => {
   const {
-    imgSrc1,
-    imgSrc2,
     title,
     description,
-    link,
-    features
+    imgSrc1,
+    id
   } = project;
 
   return (
-    <React.Fragment>
-      <section className="section">
-        <div className="container">
-          <h2 className="title"><a href={link} target="_blank">{ title }</a></h2>
-          <br />
-
-          <h3 className="title is-size-5">Description</h3>
-          <p>{ description }</p>
-          <br />
-
-          <h3 className="title is-size-5">Screenshot</h3>
-          <div className="columns">
-            <div className="column is-4">
-              <figure className="image">
-                <img src={imgSrc1} alt="screenshot-1" />
-              </figure>
-            </div>
-            <div className="column is-4">
-              <figure className="image">
-                <img src={imgSrc2} alt="screenshot-2" />
-              </figure>
-            </div>
-            {project.imgSrc3 &&
-              <div className="column is-4">
-                <figure className="image">
-                  <img src={project.imgSrc3} alt="screenshot-3" />
-                </figure>
-              </div>
-            }
-          </div>
-          <br />
-
-          <h3 className="title is-size-5">Features</h3>
-          <div className="content">
-            <ul>
-              {features.map(feature =>
-                <li key={feature}>{feature}</li>
-              )}
-            </ul>
-          </div>
-          <br />
-          
-          <h3 className="title is-size-5">Link to the project</h3>
-          <p><a href={link} target="_blank">{ link }</a></p>
-          <br />
-
-          <hr />
+    <div className="column">
+      <Link to={`/projects/${id}`} onClick={() => window.scrollTo(0, 0)}>
+      <div className="card">
+        <div className="card-image" style={{ borderBottom: "1px solid #d3d3d3"}}>
+          <figure className="image">
+            <img src={ imgSrc1 } alt={ title } />
+          </figure>
         </div>
-      </section>
-    </React.Fragment>
+        
+        <div className="card-content">
+          <p className="subtitle">{ title }</p>   
+          <p>{ description }</p>
+        </div>
+      </div>
+      </Link>
+    </div>
   );
-};
-
-const Tag = ({ children }) => (
-  <span>
-    <span className="tag is-dark">
-      {children}
-    </span> 
-    &nbsp;
-  </span>
-);
+}
 
 // export
 export default ProjectCard;
