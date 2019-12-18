@@ -54,7 +54,7 @@ const projects = [
     imgSrc2: HackerNews_2,
     title: "Hacker News Web App",
     description: "A hacker news search app using react, redux and redux-saga.",
-    link: "https://protected-citadel-85961.herokuapp.com/",
+    link: "http://protected-citadel-85961.herokuapp.com/",
     features: [
       "Use react, redux and redux saga that quires the Hackernews API",
 	    "Display an infinite scroll list for fetching more stories from the API",
