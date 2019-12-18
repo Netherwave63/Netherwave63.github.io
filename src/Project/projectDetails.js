@@ -44,7 +44,7 @@ const ProjectDetails = ({ match, onToggleModal }) => {
             </div>
             {imgSrc3 &&
               <div className="column is-4">
-                <figure className="image" onClick={() => onToggleModal(imgSrc1)}>
+                <figure className="image" onClick={() => onToggleModal(imgSrc3)}>
                   <img src={imgSrc3} alt="screenshot-3" />
                 </figure>
               </div>

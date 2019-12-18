@@ -7,7 +7,7 @@ const Contact = () => {
   const [message, setMessage] = React.useState('');
 
   const onSubmit = event => {
-    alert("Thank you for submitting.");
+    alert("Thank you for submitting your feedback.");
     setUsername('');
     setMessage('');
     event.preventDefault();
@@ -47,7 +47,7 @@ const Contact = () => {
 
               <div className="field">
                 <div className="control">
-                  <button type="submit" className="button is-dark">Submit</button>
+                  <button type="submit" className="button is-dark" disabled={username === '' || message === ''}>Submit</button>
                 </div>
               </div>
             </form>
