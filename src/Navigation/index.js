@@ -24,13 +24,13 @@ const Navigation =  () => {
 
       <div className={isActive ? "navbar-menu is-active" : "navbar-menu"}>
         <div className="navbar-end">
-          <Link to="/" className="navbar-item">
+          <Link to="/" className="navbar-item" onClick={() => toggleNavbar(!isActive)}>
             About
           </Link>
-          <Link to="/projects" className="navbar-item">
+          <Link to="/projects" className="navbar-item" onClick={() => toggleNavbar(!isActive)}>
             Projects
           </Link>
-          <Link to="/contact" className="navbar-item">
+          <Link to="/contact" className="navbar-item" onClick={() => toggleNavbar(!isActive)}>
             Contact
           </Link>
         </div>
