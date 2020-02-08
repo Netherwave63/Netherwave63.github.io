@@ -40,7 +40,7 @@ const App = ({ isActive }) => (
     </main>
 
     <footer className="footer">
-      <p>By Netherwave @2019 <br/> Website in progress...</p>
+      <p>By Netherwave @2020 <br/> Website in progress...</p>
     </footer>
   </Router>
 );
