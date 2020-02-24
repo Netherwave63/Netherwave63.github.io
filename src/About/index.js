@@ -7,14 +7,15 @@ const skills = [
   "Javascript ES6",
   "CSS Framework (Bootstrap, Materialize, Bulma)",
   "Javascript Framework/ Library (React, Redux, Redux-Saga)",
-	"Version Control with Git",	
+  "Version Control with Git",
   "Testing/ Mocking (Jest, Enzyme)",
-	"Responsive Design",
-	"Browser Developer Tools",
-	"Command Line (Window Terminal)",
-	"Integrate with Cloud Storage, Database, REST API, user authentication",
-	"IDE Tools (Visual studio code, Atom, Notepad++)",
-  "Basic Deployment"	
+  "Responsive Design",
+  "Browser Developer Tools",
+  "Command Line (Window Terminal)",
+  "Integrate with Cloud Storage, Database, REST API, user authentication",
+  "IDE Tools (Visual studio code, Atom, Notepad++)",
+  "Basic Deployment",
+  "Backend: Node.js"
 ];
 
 const About = () => (
